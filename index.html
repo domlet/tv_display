@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2x2 Iframes Grid</title>
+  <style>
+    /* Container for the 2x2 grid */
+    .grid-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      height: 100vh;
+      /* Full viewport height */
+      gap: 10px;
+      /* Space between iframes */
+    }
+
+    /* Style for each iframe */
+    .grid-item {
+      width: 100%;
+      height: 100%;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Grid container with 4 iframes -->
+  <div class="grid-container">
+    <!-- Replace 'URL_1', 'URL_2', etc. with the desired URLs -->
+    <iframe src="https://domlet.github.io/dashboard/" class="grid-item"></iframe>
+    <iframe src="https://editor.p5js.org/domlet/full/kKz3PSQs7" class="grid-item"></iframe>
+    <iframe src="https://domlet.github.io/dashboard/" class="grid-item"></iframe>
+    <iframe src="https://domlet.github.io/dashboard/" class="grid-item"></iframe>
+  </div>
+  <script>
+    // Keep screen awake:
+    // https://developer.mozilla.org/en-US/docs/Web/API/WakeLock/request
+    const requestWakeLock = async () => {
+      try {
+        const wakeLock = await navigator.wakeLock.request("screen");
+      } catch (err) {
+        // The wake lock request fails - usually system-related, such as low battery.
+        console.log(`${err.name}, ${err.message}`);
+      }
+    };
+    requestWakeLock();
+  </script>
+</body>
+
+</html>
